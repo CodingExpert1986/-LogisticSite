@@ -1,0 +1,145 @@
+body {
+  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 10px 14px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #fff449;
+}
+
+.main {
+  min-height: 100vh;
+}
+
+.hero-banner {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 140px 24px 40px;
+  background-image: url("/images/icon/background1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.75));
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.05;
+  margin: 0 0 1rem;
+  position: relative;
+  bottom: 100px;
+  margin-left: 50px;
+}
+
+.hero-text p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin: 0 0 1.75rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #ffcc00;
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 999px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+}
+
+.footer {
+  text-align: center;
+  padding: 24px 0;
+  background: #111111;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 20px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  .hero-banner {
+    padding: 120px 20px 32px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.4rem, 8vw, 3.4rem);
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
