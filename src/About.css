@@ -62,9 +62,9 @@
   position: relative;
   z-index: 1;
   max-width: 1500px;
-  min-height: 1200px;
+  min-height: 620px;
   margin: 0 auto;
-  padding: 240px 24px 24px;
+  padding: 180px 8%;
   background: transparent;
   overflow: visible;
   clip-path: polygon(0 25%, 100% 0, 100% 80%, 0 100%);
@@ -77,48 +77,126 @@
 }
 
 .about-decription {
+  max-width: 560px;
   color: white;
-  font-size: 20px;
-  margin-left: 30px;
+  margin-left: 6%;
+  font-size: 18px;
+  line-height: 1.7;
 }
 
 .about-image {
-  width: 25%;
-  gap: 40px;
+  width: min(42%, 520px);
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
-.span {
-  line-height: 0.1rem;
+.about-eyebrow {
+  margin: 0 0 10px;
+  color: #f4d35e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .grid-card1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  max-width: 1100px;
-  margin: 0;
+  gap: 16px;
+  max-width: 1120px;
+  margin: -120px auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 3;
 }
 
 .card2 {
   background-color: #ffffff;
   padding: 20px 24px;
   width: 100%;
-  max-width: 230px;
-  min-height: 320px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-left: 80px;
-  position: relative;
-  z-index: 3;
-  overflow: visible;
-  margin-bottom: -258px;
-  transition: all 0.3s ease;
-  transition: 0.3s;
+  border: 1px solid #e6edf7;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(13, 43, 90, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .card2:hover {
-  transform: translate(-25px);
-  background-color: #ffffff;
-  cursor: pointer;
+  transform: translateY(-6px);
+  box-shadow: 0 22px 40px rgba(13, 43, 90, 0.15);
+}
+
+.card2 img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  margin-bottom: 18px;
+}
+
+.metric-value {
+  color: #0d2b5a;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1;
+}
+
+.card2 span {
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.capabilities {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.capability-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.capability-heading strong {
+  color: #f4d35e;
+}
+
+.capability-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.capability-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #f4d35e;
+  transform-origin: left;
+  animation: capabilityGrow 1s ease-out both;
+}
+
+@keyframes capabilityGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 .destription {
@@ -313,8 +391,58 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .about-content {
+    min-height: 210px;
+    padding: 24px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  }
+
+  .logistics-container {
+    padding: 24px 16px;
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-card1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 24px 16px 0;
+    padding: 0;
+  }
+
+  .card2 {
+    max-width: none;
+    min-height: 220px;
+    margin: 0;
+  }
+
+  .about-containter {
+    min-height: auto;
+    flex-direction: column;
+    padding: 90px 20px 70px;
+    clip-path: polygon(0 8%, 100% 0, 100% 96%, 0 100%);
+  }
+
+  .about-image {
+    width: 100%;
+    max-width: 420px;
+    max-height: 280px;
+  }
+
+  .about-decription {
+    margin: 28px 0 0;
+    font-size: 16px;
+  }
+
+  .about-decription h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .description-text br {
+    display: none;
   }
 
   .about-decription {

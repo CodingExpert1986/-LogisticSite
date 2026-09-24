@@ -1,4 +1,56 @@
+import { useEffect, useState } from "react";
+
+const metrics = [
+  { value: 2400, suffix: "", label: "Air shipments" },
+  { value: 259, suffix: "M", label: "Ocean transit" },
+  { value: 67, suffix: "K", label: "Road deliveries" },
+  { value: 94, suffix: "M", label: "Expert miles" },
+];
+
+const capabilities = [
+  { label: "Safe transportation", value: 90 },
+  { label: "Responsive support", value: 80 },
+  { label: "Online tracking", value: 75 },
+];
+
 function About() {
+  const [counts, setCounts] = useState(metrics.map(() => 0));
+  const [hasCounted, setHasCounted] = useState(false);
+
+  useEffect(() => {
+    const metricSection = document.querySelector(".grid-card1");
+    if (!metricSection || hasCounted) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        setHasCounted(true);
+        const startedAt = performance.now();
+        const duration = 1200;
+
+        const animate = (timestamp) => {
+          const progress = Math.min((timestamp - startedAt) / duration, 1);
+          const easedProgress = 1 - (1 - progress) ** 3;
+          setCounts(
+            metrics.map((metric) => Math.round(metric.value * easedProgress)),
+          );
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+
+        requestAnimationFrame(animate);
+        observer.disconnect();
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(metricSection);
+    return () => observer.disconnect();
+  }, [hasCounted]);
+
   return (
     <main className="container">
       <div className="about-content">
@@ -26,70 +78,62 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="grid-card1">
-        <div className="card2">
-          <img src="/images/icon/icon1.png" alt="icon" />
-
-          <h2 className="line">│</h2>
-          <h1>2,400</h1>
-          <p>Air Transportation</p>
-        </div>
-        <div className="card2">
-          <img src="/images/icon/icon2.png" alt="icon" />
-          <h2 className="line">│</h2>
-          <h1>259M</h1>
-          <p>Ship Transit</p>
-        </div>
-        <div className="card2">
-          <img src="/images/icon/icon-cargo.png" alt="icon" />
-
-          <h2 className="line">│</h2>
-          <h1>67K </h1>
-          <p>Roads Transit</p>
-        </div>
-        <div className="card2">
-          <img src="/images/icon/icon3.png" alt="icon" />
-          <h2 className="line">│</h2>
-          <h1>94M</h1>
-          <p>Expert Transit</p>
-        </div>
+      <div className="grid-card1" aria-label="Logistics performance metrics">
+        {metrics.map((metric, index) => (
+          <div className="card2" key={metric.label}>
+            <img
+              src={`/images/icon/${index === 2 ? "icon-cargo" : `icon${index + 1}`}.png`}
+              alt=""
+            />
+            <strong className="metric-value">
+              {counts[index].toLocaleString()}
+              {metric.suffix}
+            </strong>
+            <span>{metric.label}</span>
+          </div>
+        ))}
       </div>
 
       <section className="about-containter">
-        <img src="/images/icon/cutt.jpeg" className="about-image" alt="" />
+        <img
+          src="/images/icon/cutt.jpeg"
+          className="about-image"
+          alt="Cargo being prepared for transportation"
+        />
         <div className="about-decription">
-          <h1>WE ARE THE BEST IN TRANSPORTATION</h1>
+          <p className="about-eyebrow">Built for dependable delivery</p>
+          <h1>LOGISTICS THAT KEEP BUSINESS MOVING</h1>
           <p>
-            From conversion-minded design to organic and paid traffic channels
+            From first-mile pickup to final delivery, we coordinate every step
+            with clear communication, secure handling, and practical solutions
+            that help your business move with confidence.
           </p>
-          <strong className="strong">
-            <p>Safe Transportation</p>
-            <span className="span">
-              _____________________________________________________90%
-            </span>
-            <p>Friendly Support</p>
-            <span className="span">
-              _____________________________________________80%
-            </span>
-            <p>Online Transportation</p>
-            <span className="span">
-              ______________________________________75%
-            </span>
-          </strong>
+          <div className="capabilities">
+            {capabilities.map((capability) => (
+              <div className="capability" key={capability.label}>
+                <div className="capability-heading">
+                  <span>{capability.label}</span>
+                  <strong>{capability.value}%</strong>
+                </div>
+                <div className="capability-track">
+                  <span style={{ width: `${capability.value}%` }} />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="logistic-experts-section">
         <div className="section-header">
           <div className="orange-divider"></div>
-          <h2 className="sub-title">WHY WE ARE LOGISTIC</h2>
+          <h2 className="sub-title">WHY CHOOSE US</h2>
           <h1 className="main-title-text">
-            WE ARE EXPERT IN LOGISTIC SERVICES
+            WE ARE EXPERTS IN LOGISTICS SERVICES
           </h1>
           <p className="description-text">
-            It is important to identify the skills you need to develop or
-            improve <br />
-            so that you can succeed in your day-to-day business operations.
+            Our team combines practical experience, responsive support, and
+            reliable technology to simplify day-to-day logistics operations.
           </p>
         </div>
 
@@ -113,7 +157,9 @@ function About() {
                 alt="Solutions Icon"
               />
             </div>
-            <p className="card-caption">Providing best logistic Solutions</p>
+            <p className="card-caption">
+              Providing the best logistics solutions
+            </p>
           </div>
 
           <div className="gold-feature-card">
@@ -124,11 +170,13 @@ function About() {
                 alt="Growth Icon"
               />
             </div>
-            <p className="card-caption">Help to Grow your Online Logistic</p>
+            <p className="card-caption">
+              Helping your logistics operation grow
+            </p>
           </div>
         </div>
       </section>
-          </main>
+    </main>
   );
 }
 

@@ -1,39 +1,41 @@
 function Services() {
+  const packages = [
+    ["Basic Freight", "$59", "Single covered truck"],
+    ["Pro Freight", "$69", "Double covered truck"],
+    ["Premium Pack", "$99", "Priority freight handling"],
+    ["Special Pack", "$119", "Flexible freight solution"],
+  ];
+
   return (
     <main className="container">
       <div className="services-content">
         <h1 className="services">SERVICES</h1>
       </div>
+
       <div className="services-decription">
-        <h1 className="services-text">
-          OUR TRANSPORTATION SERVICES <br />
-          WHAT WE DO?
-        </h1>
+        <h1 className="services-text">OUR TRANSPORTATION SERVICES</h1>
+        <p className="services-intro">
+          Reliable options for every stage of your supply chain.
+        </p>
       </div>
+
       <div className="service-grid">
         <article className="service-card">
           <div className="service-card-top">
             <img src="/images/icon/s1.jpg" alt="Air freight" />
-            <p className="service-card-title">
-              AIR FREIGHT <br /> TRANSPORTATION
-            </p>
+            <p className="service-card-title">AIR FREIGHT TRANSPORTATION</p>
           </div>
         </article>
         <article className="service-card">
           <div className="service-card-top">
-            <img src="/images/icon/s2.jpg" alt="Shipping" />
-            <p className="service-card-title">
-              SHIPPING <br /> TRANSPORTATION
-            </p>
+            <img src="/images/icon/s2.jpg" alt="Ocean freight" />
+            <p className="service-card-title">OCEAN FREIGHT TRANSPORTATION</p>
           </div>
         </article>
         <article className="service-card">
           <div className="service-card-top">
-            <img src="/images/icon/s3.jpg" alt="Trucking" />
-            <p className="service-card-title">
-              TRUCKING <br />
-              TRANSPORTATION
-            </p>
+            <img src="/images/icon/s3.jpg" alt="Road freight" />
+            <p className="service-card-title">ROAD TRANSPORTATION</p>
           </div>
         </article>
       </div>
@@ -41,32 +43,29 @@ function Services() {
       <section className="distribution-service">
         <img
           src="/images/icon/security.png"
-          alt="Distribution facility"
+          alt="Secure distribution facility"
           className="service-image"
         />
         <div className="distribution-content-service">
           <h1>DISTRIBUTION CENTERS</h1>
           <p className="service-copy">
-            Need space? You can count on "US" to take care of all your transport{" "}
-            <br /> Warehousing and 3PL needs. Vitesse has 2 warehouses with over
-            400,000 <br /> square feet of secure, leasable space. Protected by
-            sprinkler systems, our <br />
-            warehouses are monitored 24/7 by a security and video surveillance
-            system.
+            Need extra space? Our warehousing and 3PL services keep your goods
+            secure, organized, and ready for delivery. Our facilities are
+            monitored around the clock with professional security systems.
           </p>
           <div className="service-info-row">
             <div className="service-info-card">
               <img src="/images/icon/d1.png" alt="Delivered packages" />
               <div>
                 <strong>45K+</strong>
-                <span>Delivered Packages</span>
+                <span>Delivered packages</span>
               </div>
             </div>
             <div className="service-info-card">
-              <img src="/images/icon/d2.png" alt="Cargo daily" />
+              <img src="/images/icon/d2.png" alt="Daily cargo" />
               <div>
                 <strong>250K+</strong>
-                <span>Unique Cargo Daily</span>
+                <span>Shipments handled</span>
               </div>
             </div>
           </div>
@@ -75,29 +74,24 @@ function Services() {
 
       <section className="service-decription">
         <div className="description-content">
-          <h1>
-            REQUEST A <br />
-            FAIR QUOTE
-          </h1>
+          <h1>REQUEST A FAIR QUOTE</h1>
           <p>
-            Our core values are the guiding principles that drive every delivery{" "}
-            <br /> and decision we make. In logistics, reliability is
-            everything—we treat <br /> your cargo with the highest standard of
-            safety, transparency, and <br /> efficiency at every step of the
-            journey.
+            Our core values guide every delivery and decision we make. We treat
+            your cargo with the highest standards of safety, transparency, and
+            efficiency at every step of its journey.
           </p>
           <div className="service-cord">
             <p>
-              <span>✓</span> Transportation Optimization Service
+              <span>✓</span> Transportation optimization
             </p>
             <p>
-              <span>✓</span> 100% Safe & Secure Delivery Services
+              <span>✓</span> Safe and secure delivery
             </p>
             <p>
-              <span>✓</span> Track Your Shipment Online
+              <span>✓</span> Online shipment tracking
             </p>
             <p>
-              <span>✓</span> User Generated Content in Real Time
+              <span>✓</span> Real-time shipment updates
             </p>
           </div>
         </div>
@@ -105,104 +99,63 @@ function Services() {
         <form className="form">
           <div className="form-row2">
             <div className="form-group2">
-              <label htmlFor="fullName">Full Name*</label>
-              <input
-                type="text"
-                id="fullName"
-                placeholder="Your Full Name required"
-              />
+              <label htmlFor="fullName">Full Name *</label>
+              <input type="text" id="fullName" placeholder="Your full name" />
             </div>
             <div className="form-group2">
-              <label htmlFor="email">Email*</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="Your Email Address required"
-              />
+              <label htmlFor="email">Email *</label>
+              <input type="email" id="email" placeholder="Your email address" />
             </div>
           </div>
 
           <div className="form-row2">
             <div className="form-group2">
-              <label htmlFor="service">Interest of Service</label>
-              <input type="text" id="service" placeholder="e.g., Sea Freight" />
+              <label htmlFor="service">Service of Interest</label>
+              <input type="text" id="service" placeholder="e.g. Sea freight" />
             </div>
             <div className="form-group2">
-              <label htmlFor="phoneNumber">Phone Number*</label>
+              <label htmlFor="phoneNumber">Phone Number</label>
               <input
                 type="tel"
                 id="phoneNumber"
-                placeholder="Your Phone Number required"
+                placeholder="Your phone number"
               />
             </div>
           </div>
 
           <div className="form-group2 message-group">
-            <label htmlFor="massage">Your Message</label>
+            <label htmlFor="message">Your Message</label>
             <textarea
-              id="massage"
+              id="message"
               rows="6"
-              placeholder="Write your message here ..."
-            ></textarea>
+              placeholder="Tell us about your shipment..."
+            />
           </div>
           <button type="submit" className="buttonn">
-                        Request a Quote
+            Request a Quote
           </button>
         </form>
       </section>
+
       <section className="cards-section">
-        <h1 className="title">
-          {" "}
-          OUR PACKAGING <br /> OPTIONS
-        </h1>
+        <h1 className="title">OUR PACKAGING OPTIONS</h1>
       </section>
+
       <div className="cardd-grid">
-        <div className="card">
-          <p>Basic Freight</p>
-          <span>$59</span>
-          <p>Single Covered Truck</p>
-          <p>100% Insurance</p>
-          <p>Cargo Guarantee</p>
-          <p>Additional Single Truck</p>
-          <button type="button" className="buttonn">
-            GET STARTED
-          </button>
-        </div>
-        <div className="card">
-          <p>Pro Freight</p>
-          <span>$69</span>
-          <p>Double Covered Truck</p>
-          <p>100% Insurance</p>
-          <p>Cargo Guarantee</p>
-          <p>Additional Single Truck</p>
-          <button type="button" className="buttonn">
-            GET STARTED
-          </button>
-        </div>
-        <div className="card-1">
-          <p>Premium Pack</p>
-          <span>$99</span>
-          <p>Single Covered Truck</p>
-          <p>100% Insurance</p>
-          <p>Cargo Guarantee</p>
-          <p>Additional Single Truck</p>
-          <button type="button" className="buttonn">
-            GET STARTED
-          </button>
-        </div>
-        <div className="card">
-          <p>Special Pack</p>
-          <span>$119</span>
-          <p>Single Covered Truck</p>
-          <p>100% Insurance</p>
-          <p>Cargo Guarantee</p>
-          <p>Additional Single Truck</p>
-          <button type="button" className="buttonn">
-            GET STARTED
-          </button>
-        </div>
+        {packages.map(([name, price, detail], index) => (
+          <div className={index === 2 ? "card-1" : "card"} key={name}>
+            <p>{name}</p>
+            <span>{price}</span>
+            <p>{detail}</p>
+            <p>Insurance available</p>
+            <p>Cargo guarantee</p>
+            <button type="button" className="buttonn">
+              Get Started
+            </button>
+          </div>
+        ))}
       </div>
-            </main>
+    </main>
   );
 }
 

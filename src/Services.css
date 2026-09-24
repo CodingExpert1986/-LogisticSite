@@ -37,6 +37,7 @@ section {
 
 .services-decription {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 30px;
@@ -46,6 +47,15 @@ section {
   text-align: center;
   font-weight: 900;
   line-height: 1;
+  text-wrap: balance;
+}
+
+.services-intro {
+  max-width: 52ch;
+  margin: 14px auto 0;
+  color: #475569;
+  line-height: 1.6;
+  text-align: center;
 }
 
 .service-grid {
@@ -114,6 +124,7 @@ section {
   color: #0d2b5a;
   text-align: center;
   z-index: 2;
+  text-wrap: balance;
 }
 
 .distribution-service {
@@ -167,6 +178,7 @@ section {
 .service-copy {
   margin: 0 0 28px;
   color: #ffffff;
+  max-width: 52ch;
   line-height: 1.8;
 }
 
@@ -227,9 +239,29 @@ section {
   flex: 1;
 }
 
+.description-content {
+  max-width: 560px;
+  padding: 24px 0;
+}
+
+.description-content > p {
+  max-width: 50ch;
+  margin: 20px 0 28px;
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
 .service-cord {
   display: grid;
   grid-template-columns: repeat(2, 2fr);
+  gap: 12px 24px;
+}
+
+.service-cord p {
+  margin: 0;
+  color: #334155;
+  line-height: 1.5;
 }
 
 .service-cord span {
@@ -403,9 +435,103 @@ section {
 }
 
 @media (max-width: 600px) {
+  .services-content {
+    min-height: 210px;
+    padding: 24px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  }
+
+  .services-decription {
+    padding: 24px 20px;
+  }
+
+  .services-text {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+
+  .service-grid {
+    padding: 0 16px;
+  }
+
+  .service-card-top {
+    height: 260px;
+  }
+
+  .distribution-service {
+    min-height: auto;
+    flex-direction: column;
+    padding: 100px 20px 50px;
+  }
+
+  .distribution-service::before {
+    clip-path: polygon(0 6%, 100% 0, 100% 96%, 0 100%);
+  }
+
+  .service-image {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 24px;
+  }
+
+  .distribution-content-service {
+    margin-left: 0;
+    padding-top: 20px;
+  }
+
+  .service-decription {
+    flex-direction: column;
+    padding: 48px 20px;
+    gap: 24px;
+    margin-left: 0;
+  }
+
+  .description-content {
+    width: 100%;
+    max-width: 620px;
+    padding: 0;
+  }
+
+  .description-content > p {
+    margin: 18px 0 26px;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .form {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    right: auto;
+    padding: 80px 24px 50px;
+  }
+
+  .form-row2,
+  .service-cord {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .cards-section {
+    margin: 0;
+    padding: 50px 20px 30px;
+  }
+
+  .cards-section .title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
   .cardd-grid {
     grid-template-columns: 1fr;
     max-width: 340px;
+    padding: 0 16px;
+  }
+
+  .card,
+  .card-1 {
+    max-width: none;
+    margin-top: 0;
   }
 }
 

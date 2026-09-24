@@ -1,7 +1,40 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StatsSection from "./components/StatsSection";
 import ContactForm from "./components/ContactForm";
 import ContactInfo from "./components/ContactInfo";
+
+function AnimatedMetric({ value, label, icon, iconAlt }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const startedAt = performance.now();
+    const duration = 1100;
+
+    const animate = (timestamp) => {
+      const progress = Math.min((timestamp - startedAt) / duration, 1);
+      const easedProgress = 1 - (1 - progress) ** 3;
+      setCount(Math.round(value * easedProgress));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    const frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [value]);
+
+  return (
+    <div className="distribution-info-card">
+      <img src={icon} alt={iconAlt} />
+      <div>
+        <strong>{Math.round(count / 1000)}K+</strong>
+        <span>{label}</span>
+      </div>
+    </div>
+  );
+}
 
 function Home() {
   return (
@@ -79,14 +112,13 @@ function Home() {
               <span>
                 <img src="/images/icon/icon1.png" alt="icon" />
               </span>
-              AIR <br />
-              FRIGHT
+                AIR FREIGHT
             </p>
             <p>
-              We offer 24/7 airport-to-door, door-to-door and door-to- <br />{" "}
-              airport services. For airport-to-airport we rely on the fastest{" "}
-              <br /> and most qualitative possible airfreight solutions,
-              offering both <br /> express and BXO services.
+              We offer airport-to-door and door-to-door services around the
+              clock. For airport-to-airport shipments, we provide fast,
+              dependable airfreight solutions for both express and standard
+              cargo.
             </p>
           </div>
           <div>
@@ -94,14 +126,12 @@ function Home() {
               <span>
                 <img src="/images/icon/icon2.png" alt="icon" />
               </span>
-              OCEAN <br />
-              FRIGHT
+                OCEAN FREIGHT
             </p>
             <p>
-              OCEAN FRIGHT Ocean freight is the core of the Manuport Logistics
-              services. We have unique partnerships in place with all global and
-              local carriers. Additionally, we provide full reporting services
-              and shipment follow-up.
+                Ocean freight is a reliable choice for large or international
+                shipments. We work with trusted carriers and provide shipment
+                follow-up from port to destination.
             </p>
           </div>
           <div>
@@ -109,13 +139,12 @@ function Home() {
               <span>
                 <img src="/images/icon/icon3.png" alt="icon" />
               </span>
-              BARGING <br /> SOLUTIONS
+                BARGING SOLUTIONS
             </p>
             <p>
-              We cover all European inland waterways and ports with our 2 <br />
-              offices in Belgium, our vast network and our team of experts.{" "}
-              <br /> All kinds of commodities can be transported by water: bulk,{" "}
-              <br />
+              We cover all European inland waterways and ports with our 2
+              offices in Belgium, our vast network and our team of experts. All
+              kinds of commodities can be transported by water: bulk,
               break-bulk, exceptional pieces.
             </p>
           </div>
@@ -124,7 +153,7 @@ function Home() {
               <span>
                 <img src="/images/icon/icon-cargo.png" alt="icon" />
               </span>
-              ROAD <br /> TRANSPORTATION
+                ROAD TRANSPORTATION
             </p>
             <p>
               In Europe, we have over 50 experts, delivering your products by{" "}
@@ -144,11 +173,9 @@ function Home() {
         </div>
         <div className="review-card">
           <p>
-            I ONLY use Logistics for my shipping needs. My clients have all come
-            to expect the excellent shipping and handling of their merchandise
-            that Global has to offer. Their expediting team makes it possible to
-            get jobs out last minute if necessary and let us know when it has
-            delivered.
+            “This logistics team communicates clearly, handles every shipment
+            with care, and keeps us informed from dispatch through delivery.
+            They make it easier for us to keep our own customers updated.”
           </p>
         </div>
       </section>
@@ -162,29 +189,24 @@ function Home() {
         <div className="distribution-content">
           <h1>DISTRIBUTION CENTERS</h1>
           <p className="distribution-copy">
-            Need space? You can count on "US" to take care of all your transport{" "}
-            <br /> Warehousing and 3PL needs. Vitesse has 2 warehouses with over
-            400,000 <br /> square feet of secure, leasable space. Protected by
-            sprinkler systems, our <br />
-            warehouses are monitored 24/7 by a security and video surveillance
-            system.
+            Need extra space? Our warehousing and 3PL services keep your goods
+            secure, organized, and ready for delivery. Our facilities are
+            monitored around the clock with professional security systems.
           </p>
 
           <div className="distribution-info-row">
-            <div className="distribution-info-card">
-              <img src="/images/icon/d1.png" alt="Delivered packages" />
-              <div>
-                <strong>45K+</strong>
-                <span>Delivered Packages</span>
-              </div>
-            </div>
-            <div className="distribution-info-card">
-              <img src="/images/icon/d2.png" alt="Cargo daily" />
-              <div>
-                <strong>250K+</strong>
-                <span>Unique Cargo Daily</span>
-              </div>
-            </div>
+            <AnimatedMetric
+              value={45000}
+              label="Delivered packages"
+              icon="/images/icon/d1.png"
+              iconAlt="Delivered packages"
+            />
+            <AnimatedMetric
+              value={250000}
+              label="Shipments handled"
+              icon="/images/icon/d2.png"
+              iconAlt="Shipments handled"
+            />
           </div>
         </div>
       </section>
