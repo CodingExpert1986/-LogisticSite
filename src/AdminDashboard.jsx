@@ -71,10 +71,16 @@ function AdminDashboard({ onLogout }) {
         .order("created_at", { ascending: false })
         .limit(10);
 
-      if (!error && data && data.length) {
-        setShipments(data);
+      if (error) {
+        setMessage({
+          text: `Unable to load shipments: ${error.message}`,
+          type: "error",
+        });
         return;
       }
+
+      setShipments(data || []);
+      return;
     }
 
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
@@ -100,14 +106,48 @@ function AdminDashboard({ onLogout }) {
     event.preventDefault();
 
     const trackingId = form.tracking_id.trim();
-    if (!trackingId) {
-      setMessage({ text: "Tracking ID is required.", type: "error" });
+    const customerName = form.customer_name.trim();
+    const origin = form.origin.trim();
+    const destination = form.destination.trim();
+    const currentLocation = form.current_location.trim();
+    const cargoType = form.cargo_type.trim();
+
+    if (
+      !trackingId ||
+      !customerName ||
+      !origin ||
+      !destination ||
+      !currentLocation ||
+      !form.eta ||
+      !cargoType
+    ) {
+      setMessage({
+        text: "Please fill in all required shipment fields.",
+        type: "error",
+      });
       return;
+    }
+
+    const normalizedTrackingId = trackingId.toUpperCase();
+
+    if (!editingId) {
+      const existingShipment = shipments.some(
+        (item) =>
+          (item.tracking_id || "").toUpperCase() === normalizedTrackingId,
+      );
+
+      if (existingShipment) {
+        setMessage({
+          text: "A shipment with this Tracking ID already exists.",
+          type: "error",
+        });
+        return;
+      }
     }
 
     const payload = {
       ...form,
-      tracking_id: trackingId.toUpperCase(),
+      tracking_id: normalizedTrackingId,
       weight_kg: Number(form.weight_kg) || 0,
     };
 

@@ -391,6 +391,22 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .logistic-experts-section {
+    margin-top: 0;
+  }
+
+  .logistics-cards-grid {
+    row-gap: 70px;
+  }
+
+  .gold-feature-card {
+    margin-top: 25px;
+  }
+
+  .navy-icon-badge {
+    top: -45px;
+  }
+
   .about-content {
     min-height: 210px;
     padding: 24px 20px;

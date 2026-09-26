@@ -33,7 +33,9 @@ function ContactForm({ onSubmit }) {
     if (onSubmit) {
       onSubmit(formData);
     } else {
-      alert("Thank you! Your message has been sent successfully.");
+      alert(
+        "Thank you! Your message has been recieved. This demo form is not connected to a live email service yet.",
+      );
     }
 
     setFormData({

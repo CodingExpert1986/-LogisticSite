@@ -1,19 +1,19 @@
 function StatsSection() {
   const stats = [
-    { value: "1,526", label: "Satisfied Clients" },
-    { value: "1,451K", label: "KM Per Year" },
-    { value: "9,435", label: "Delivered Packages" },
-    { value: "12,168", label: "Tons Of Goods" },
+    { value: "24/7", label: "Cargo Support" },
+    { value: "4+", label: "Transport Services" },
+    { value: "100%", label: "Project Focus" },
+    { value: "Fast", label: "Delivery Solutions" },
   ];
 
   return (
     <section className="stats-section">
       <div className="stats-grid">
         {stats.map((stat) => (
-          <button className="stat-card" type="button" key={stat.label}>
+          <div className="stat-card" key={stat.label}>
             <span className="stat-value">{stat.value}</span>
             <span className="stat-label">{stat.label}</span>
-          </button>
+          </div>
         ))}
       </div>
     </section>

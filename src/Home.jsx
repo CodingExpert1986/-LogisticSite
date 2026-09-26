@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import StatsSection from "./components/StatsSection";
 import ContactForm from "./components/ContactForm";
@@ -6,7 +5,7 @@ import ContactInfo from "./components/ContactInfo";
 
 function AnimatedMetric({ value, label, icon, iconAlt }) {
   const [count, setCount] = useState(0);
-
+  a;
   useEffect(() => {
     const startedAt = performance.now();
     const duration = 1100;
@@ -110,9 +109,9 @@ function Home() {
           <div>
             <p>
               <span>
-                <img src="/images/icon/icon1.png" alt="icon" />
+                <img src="/images/icon/icon1.png" alt="Air freight" />
               </span>
-                AIR FREIGHT
+              AIR FREIGHT
             </p>
             <p>
               We offer airport-to-door and door-to-door services around the
@@ -124,58 +123,60 @@ function Home() {
           <div>
             <p>
               <span>
-                <img src="/images/icon/icon2.png" alt="icon" />
+                <img src="/images/icon/icon2.png" alt="Ocean freight" />
               </span>
-                OCEAN FREIGHT
+              OCEAN FREIGHT
             </p>
             <p>
-                Ocean freight is a reliable choice for large or international
-                shipments. We work with trusted carriers and provide shipment
-                follow-up from port to destination.
+              Ocean freight is a reliable choice for large or international
+              shipments. We work with trusted carriers and provide shipment
+              follow-up from port to destination.
             </p>
           </div>
           <div>
             <p>
               <span>
-                <img src="/images/icon/icon3.png" alt="icon" />
+                <img src="/images/icon/icon3.png" alt="Barging solutions" />
               </span>
-                BARGING SOLUTIONS
+              BARGING SOLUTIONS
             </p>
             <p>
-              We cover all European inland waterways and ports with our 2
-              offices in Belgium, our vast network and our team of experts. All
-              kinds of commodities can be transported by water: bulk,
-              break-bulk, exceptional pieces.
+              We provide waterway transportation solutions for suitable cargo,
+              helping businesses move goods efficiently between ports and inland
+              destinations.
             </p>
           </div>
           <div>
             <p>
               <span>
-                <img src="/images/icon/icon-cargo.png" alt="icon" />
+                <img
+                  src="/images/icon/icon-cargo.png"
+                  alt="Road transportation"
+                />
               </span>
-                ROAD TRANSPORTATION
+              ROAD TRANSPORTATION
             </p>
             <p>
-              In Europe, we have over 50 experts, delivering your products by{" "}
-              truck to their destinations. Globally we are able to offer
-              solutions for all transport modes: conventional, bulk, container
-              and multimodal.
+              Our road transportation solutions help move goods safely and
+              efficiently from pickup points to their final destinations. We
+              support flexible transportation options for different types of
+              cargo and delivery needs.
             </p>
           </div>
         </div>
       </section>
       <section className="customer-review">
         <div>
-          <h1>CUSTOMERS REVIEWS</h1>
+          <h1>WHY CHOOSE US</h1>
         </div>
         <div className="review-heading">
           <span className="quote-mark">“</span>
         </div>
         <div className="review-card">
           <p>
-            “This logistics team communicates clearly, handles every shipment
-            with care, and keeps us informed from dispatch through delivery.
-            They make it easier for us to keep our own customers updated.”
+            Reliable logistics solutions designed to keep your cargo moving
+            safely, efficiently, and with clear communication from dispatch to
+            delivery.
           </p>
         </div>
       </section>
@@ -195,18 +196,21 @@ function Home() {
           </p>
 
           <div className="distribution-info-row">
-            <AnimatedMetric
-              value={45000}
-              label="Delivered packages"
-              icon="/images/icon/d1.png"
-              iconAlt="Delivered packages"
-            />
-            <AnimatedMetric
-              value={250000}
-              label="Shipments handled"
-              icon="/images/icon/d2.png"
-              iconAlt="Shipments handled"
-            />
+            <div className="distribution-info-card">
+              <img src="/images/icon/d1.png" alt="Cargo handling" />
+              <div>
+                <strong>24/7</strong>
+                <span>Cargo Support</span>
+              </div>
+            </div>
+
+            <div className="distribution-info-card">
+              <img src="/images/icon/d2.png" alt="Delivery solutions" />
+              <div>
+                <strong>Fast</strong>
+                <span>Delivery Solutions</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
