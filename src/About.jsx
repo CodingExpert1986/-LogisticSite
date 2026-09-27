@@ -52,7 +52,7 @@ function About() {
   }, [hasCounted]);
 
   return (
-    <main className="container">
+    <main className="container about-page">
       <div className="about-content">
         <h1 className="about">ABOUT US</h1>
       </div>

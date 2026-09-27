@@ -226,7 +226,7 @@ body {
 .stats-section {
   background: #0d2b5a;
   clip-path: polygon(0 20%, 100% 0, 100% 85%, 0 100%);
-  padding: 180px 24px 48px;
+  padding: 220px 24px 48px;
   margin: -230px auto 3rem;
   min-height: 900px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
@@ -1397,6 +1397,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .admin-page {
+    padding-bottom: 24px;
+  }
+
+  .admin-page + footer {
+    margin-top: 24px;
+  }
+
   .hero-banner {
     min-height: 680px;
     align-items: flex-end;
@@ -1471,7 +1479,7 @@ footer {
   .stats-section {
     min-height: auto;
     margin: 0 auto 2rem;
-    padding: 100px 20px 70px;
+    padding: 140px 20px 70px;
     clip-path: polygon(0 5%, 100% 0, 100% 96%, 0 100%);
   }
 
@@ -1553,7 +1561,11 @@ footer {
   }
 
   .admin-page {
-    padding: 28px 16px 60px;
+    padding: 28px 16px 8px;
+  }
+
+  .admin-page + footer {
+    margin-top: 0;
   }
 
   .admin-hero {

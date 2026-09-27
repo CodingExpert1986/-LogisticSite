@@ -392,6 +392,14 @@ footer {
 
 @media (max-width: 768px) {
   .logistic-experts-section {
+    padding-bottom: 24px;
+  }
+
+  .about-page + footer {
+    margin-top: 24px;
+  }
+
+  .logistic-experts-section {
     margin-top: 0;
   }
 

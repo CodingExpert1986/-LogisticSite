@@ -57,15 +57,15 @@ function Services() {
             <div className="service-info-card">
               <img src="/images/icon/d1.png" alt="Delivered packages" />
               <div>
-                <strong>45K+</strong>
-                <span>Delivered packages</span>
+                <strong>24/7</strong>
+                <span>Cargo Support</span>
               </div>
             </div>
             <div className="service-info-card">
               <img src="/images/icon/d2.png" alt="Daily cargo" />
               <div>
-                <strong>250K+</strong>
-                <span>Shipments handled</span>
+                <strong>Fast</strong>
+                <span>Delivery Solutions</span>
               </div>
             </div>
           </div>
