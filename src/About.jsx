@@ -1,56 +1,32 @@
-import { useEffect, useState } from "react";
-
-const metrics = [
-  { value: 2400, suffix: "", label: "Air shipments" },
-  { value: 259, suffix: "M", label: "Ocean transit" },
-  { value: 67, suffix: "K", label: "Road deliveries" },
-  { value: 94, suffix: "M", label: "Expert miles" },
+const services = [
+  {
+    title: "Air Freight",
+    description: "Airport-to-door shipping options",
+    icon: "icon1.png",
+  },
+  {
+    title: "Ocean Freight",
+    description: "Port-to-port international cargo",
+    icon: "icon2.png",
+  },
+  {
+    title: "Road Transport",
+    description: "Pickup through final delivery",
+    icon: "icon-cargo.png",
+  },
+  {
+    title: "Warehousing",
+    description: "Secure storage and distribution",
+    icon: "security.png",
+  },
 ];
-
 const capabilities = [
-  { label: "Safe transportation", value: 90 },
-  { label: "Responsive support", value: 80 },
-  { label: "Online tracking", value: 75 },
+  "Secure cargo handling",
+  "Responsive shipment support",
+  "Shipment tracking and updates",
 ];
 
 function About() {
-  const [counts, setCounts] = useState(metrics.map(() => 0));
-  const [hasCounted, setHasCounted] = useState(false);
-
-  useEffect(() => {
-    const metricSection = document.querySelector(".grid-card1");
-    if (!metricSection || hasCounted) return undefined;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        setHasCounted(true);
-        const startedAt = performance.now();
-        const duration = 1200;
-
-        const animate = (timestamp) => {
-          const progress = Math.min((timestamp - startedAt) / duration, 1);
-          const easedProgress = 1 - (1 - progress) ** 3;
-          setCounts(
-            metrics.map((metric) => Math.round(metric.value * easedProgress)),
-          );
-
-          if (progress < 1) {
-            requestAnimationFrame(animate);
-          }
-        };
-
-        requestAnimationFrame(animate);
-        observer.disconnect();
-      },
-      { threshold: 0.25 },
-    );
-
-    observer.observe(metricSection);
-    return () => observer.disconnect();
-  }, [hasCounted]);
-
   return (
     <main className="container about-page">
       <div className="about-content">
@@ -78,21 +54,16 @@ function About() {
           </div>
         </div>
       </div>
-      <div className="grid-card1" aria-label="Logistics performance metrics">
-        {metrics.map((metric, index) => (
-          <div className="card2" key={metric.label}>
-            <img
-              src={`/images/icon/${index === 2 ? "icon-cargo" : `icon${index + 1}`}.png`}
-              alt=""
-            />
-            <strong className="metric-value">
-              {counts[index].toLocaleString()}
-              {metric.suffix}
-            </strong>
-            <span>{metric.label}</span>
-          </div>
+
+      <section className="grid-card1" aria-label="Our logistics services">
+        {services.map((service) => (
+          <article className="card2" key={service.title}>
+            <img src={`/images/icon/${service.icon}`} alt="" />
+            <h2 className="service-title">{service.title}</h2>
+            <p className="service-description">{service.description}</p>
+          </article>
         ))}
-      </div>
+      </section>
 
       <section className="about-containter">
         <img
@@ -108,19 +79,13 @@ function About() {
             with clear communication, secure handling, and practical solutions
             that help your business move with confidence.
           </p>
-          <div className="capabilities">
+          <ul className="capabilities">
             {capabilities.map((capability) => (
-              <div className="capability" key={capability.label}>
-                <div className="capability-heading">
-                  <span>{capability.label}</span>
-                  <strong>{capability.value}%</strong>
-                </div>
-                <div className="capability-track">
-                  <span style={{ width: `${capability.value}%` }} />
-                </div>
-              </div>
+              <li className="capability" key={capability}>
+                {capability}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

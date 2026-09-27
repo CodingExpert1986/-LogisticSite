@@ -141,62 +141,38 @@
   margin-bottom: 18px;
 }
 
-.metric-value {
+.service-title {
+  margin: 0;
   color: #0d2b5a;
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  line-height: 1;
+  font-size: 1.15rem;
 }
 
-.card2 span {
-  margin-top: 10px;
+.service-description {
+  margin: 10px 0 0;
   color: #64748b;
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .capabilities {
   display: grid;
-  gap: 18px;
+  gap: 12px;
   margin-top: 28px;
+  padding: 0;
+  list-style: none;
 }
 
-.capability-heading {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+.capability {
+  position: relative;
+  padding-left: 20px;
 }
 
-.capability-heading strong {
+.capability::before {
+  position: absolute;
+  left: 0;
   color: #f4d35e;
-}
-
-.capability-track {
-  height: 8px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.capability-track span {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: #f4d35e;
-  transform-origin: left;
-  animation: capabilityGrow 1s ease-out both;
-}
-
-@keyframes capabilityGrow {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
+  content: "+";
+  font-weight: 800;
 }
 
 .destription {
